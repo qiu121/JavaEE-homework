@@ -18,6 +18,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 public class Student implements Serializable {
+
+    private static final long serialVersionUID = 4187529421594000219L;
     private Long id;
     /**
      * 姓名
