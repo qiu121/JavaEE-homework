@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编程题</title>
+</head>
+<body>
+<style>
+    span {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid white;
+        opacity: 0.1;
+    }
+
+    .light {
+        opacity: 1;
+    }
+
+    #red {
+        background-color: red;
+    }
+
+    #yellow {
+        background-color: yellow;
+    }
+
+    #green {
+        background-color: green;
+    }
+
+    #time {
+        margin-left: 30px;
+        font-size: 70px;
+    }
+</style>
+<p>
+    1、实现一个红绿灯效果，每次红灯亮10秒，黄灯亮3秒，绿灯亮8秒，并在红绿灯右侧显示倒计时。（写出对应JS代码即可）
+</p>
+<p>
+    <span id="red" class="light"></span>
+    <span id="yellow"></span>
+    <span id="green"></span>
+    <b id="time">10</b>
+</p>
+<script>
+    //在此处写上JS代码
+    let redNode = document.getElementById("red");
+    let yellowNode = document.getElementById("yellow");
+    let greenNode = document.getElementById("green");
+    let timeNode = document.getElementById("time");
+    let timeLeft = 10; // 默认初始时间为10秒
+    let lightIndex = 0; // 当前亮着的灯的索引
+
+    // 定义一个函数，用于切换灯光
+    function switchLight() {
+        // 判断当前亮着的是哪个灯，并根据时间长度切换到下一个灯光
+        switch (lightIndex) {
+            case 0: // 红灯亮，持续10秒，切换到黄灯
+                redNode.classList.remove("light");
+                yellowNode.classList.add("light");
+                timeLeft = 3;
+                lightIndex += 1;
+                break;
+            case 1: // 黄灯亮，持续3秒，切换到绿灯
+                redNode.classList.remove("light");
+                yellowNode.classList.remove("light");
+                greenNode.classList.add("light");
+                timeLeft = 8;
+                lightIndex += 1;
+                break;
+            case 2: // 绿灯亮，持续8秒，切换到红灯
+                greenNode.classList.remove("light");
+                redNode.classList.add("light");
+                timeLeft = 10;
+                lightIndex = 0;
+                break;
+            default:
+                break;
+        }
+        timeNode.innerHTML = timeLeft;
+    }
+
+    // 初始化页面时首先执行一次切换灯光
+    switchLight();
+
+    // 每隔一定时间切换灯光，并更新倒计时时间
+    setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft -= 1;
+            timeNode.innerHTML = timeLeft;
+        } else {
+            switchLight(); // 时间到了，切换灯光
+        }
+    }, 1000);
+
+</script>
+</body>
+</html>
