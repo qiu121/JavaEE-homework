@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @RequestMapping("/success")
-    public String success(Model model) {
-        model.addAttribute("userList", userService.list());
+    public String success(Model model, User user) {
+        model.addAttribute("user", userService.findById(user.getId()));
         return "/success.jsp";
     }
 

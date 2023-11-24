@@ -5,7 +5,6 @@ import com.github.qiu121.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -20,7 +19,7 @@ public class UserService {
         return userMapper.register(user) > 0;
     }
 
-    public List<User> list() {
-        return userMapper.list();
+    public User findById(int id) {
+        return userMapper.findById(id);
     }
 }

@@ -20,15 +20,13 @@
         <th>科目</th>
     </tr>
 
-    <c:forEach items="${userList}" var="user">
-        <tr align="center">
-            <td>${user.id }</td>
-            <td>${user.name }</td>
-            <td>${user.sex == 0 ? "男":"女" }</td>
-            <td>${user.pwd }</td>
-            <td>${user.subject }</td>
-        </tr>
-    </c:forEach>
+    <tr align="center">
+        <td>${user.id }</td>
+        <td>${user.name }</td>
+        <td>${user.sex == 0 ? "男":"女" }</td>
+        <td>*************</td>
+        <td>${user.subject }</td>
+    </tr>
 </table>
 </body>
 </html>
