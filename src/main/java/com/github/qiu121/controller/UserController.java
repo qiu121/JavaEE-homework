@@ -59,7 +59,7 @@ public class UserController {
         System.out.println(user.toString());
         boolean register = userService.register(user);
         if (register) {
-            return "forward:/user/login";
+            return "/login.jsp";
         }
         return "/register.jsp";
     }
